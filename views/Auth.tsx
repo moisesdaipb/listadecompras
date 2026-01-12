@@ -170,7 +170,12 @@ const Auth: React.FC = () => {
                 {/* Botões Sociais */}
                 <div className="flex gap-3">
                     <button
-                        onClick={() => supabase.auth.signInWithOAuth({ provider: 'google' })}
+                        onClick={() => supabase.auth.signInWithOAuth({
+                            provider: 'google',
+                            options: {
+                                redirectTo: window.location.origin
+                            }
+                        })}
                         type="button"
                         className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl border border-divider dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
                     >
