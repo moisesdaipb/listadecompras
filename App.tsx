@@ -13,6 +13,7 @@ import Profile from './views/Profile';
 import Navbar from './components/Navbar';
 import AuthGuard from './components/AuthGuard';
 
+
 const AppContent: React.FC = () => {
   const location = useLocation();
   const hideNavbarPaths = ['/', '/editor', '/shopping', '/summary', '/share'];
