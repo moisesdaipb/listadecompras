@@ -138,7 +138,28 @@ const Auth: React.FC = () => {
 
                     {/* Link Esqueci a Senha (apenas para login) */}
                     {isLogin && (
-                        <button type="button" className="text-sm text-primary font-semibold text-right hover:underline">
+                        <button
+                            type="button"
+                            onClick={async () => {
+                                if (!email) {
+                                    alert('Por favor, preencha o campo de email para recuperar sua senha.');
+                                    return;
+                                }
+                                setLoading(true);
+                                try {
+                                    const { error } = await supabase.auth.resetPasswordForEmail(email, {
+                                        redirectTo: `${window.location.origin}/update-password`,
+                                    });
+                                    if (error) throw error;
+                                    alert('Email de recuperação enviado! Verifique sua caixa de entrada.');
+                                } catch (error: any) {
+                                    alert('Erro ao enviar email: ' + error.message);
+                                } finally {
+                                    setLoading(false);
+                                }
+                            }}
+                            className="text-sm text-primary font-semibold text-right hover:underline"
+                        >
                             Esqueceu a senha?
                         </button>
                     )}
