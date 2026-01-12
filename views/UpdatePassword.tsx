@@ -20,7 +20,11 @@ const UpdatePassword: React.FC = () => {
             alert('Senha atualizada com sucesso!');
             navigate('/home');
         } catch (error: any) {
-            alert(error.message);
+            if (error.message.includes('New password should be different from the old password')) {
+                alert('A nova senha deve ser diferente da antiga.');
+            } else {
+                alert('Erro ao atualizar senha: ' + error.message);
+            }
         } finally {
             setLoading(false);
         }
