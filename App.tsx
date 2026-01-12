@@ -4,6 +4,7 @@ import { HashRouter, Routes, Route, useLocation } from 'react-router-dom';
 import Auth from './views/Auth';
 import Home from './views/Home';
 import Editor from './views/Editor';
+import UpdatePassword from './views/UpdatePassword';
 import ShoppingMode from './views/ShoppingMode';
 import Summary from './views/Summary';
 import History from './views/History';
@@ -26,6 +27,7 @@ const AppContent: React.FC = () => {
       <div className="flex-1 overflow-y-auto no-scrollbar">
         <Routes>
           <Route path="/" element={<Auth />} />
+          <Route path="/update-password" element={<UpdatePassword />} />
           <Route element={<AuthGuard />}>
             <Route path="/home" element={<Home />} />
             <Route path="/editor/:id?" element={<Editor />} />

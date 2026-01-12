@@ -13,7 +13,9 @@ const Auth: React.FC = () => {
 
     React.useEffect(() => {
         const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
-            if (session) {
+            if (event === 'PASSWORD_RECOVERY') {
+                navigate('/update-password');
+            } else if (session) {
                 navigate('/home');
             }
         });
